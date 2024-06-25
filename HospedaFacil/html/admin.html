@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/admin.css">
+    <title>Panel de Administración</title>
+</head>
+<body>
+    <form action="../PHP/agregarHabitacion.php" method="post" enctype="multipart/form-data">
+        <h1>Panel de Administración</h1>
+
+        <label for="tipoHabitacion">Tipo de Habitaciones:</label>
+        <select id="tipoHabitacion" name="tipoHabitacion" required onchange="setPrice()">
+            <option value="" disabled selected>Tipo de Habitaciones</option>
+            <option value="Presidencial">Presidencial</option>
+            <option value="Lujo">Lujo</option>
+            <option value="Premiun">Premiun</option>
+            <option value="Pareja">Pareja</option>
+            <option value="Doble">Doble</option>
+            <option value="Básica">Básica</option>
+        </select><br>
+
+        <label for="numeroHabitacion">Numero de la habitación:</label>
+        <input type="number" id="numeroHabitacion" name="numeroHabitacion" required><br>
+
+        <label for="descripcion">Descripción de la habitación:</label>
+        <textarea id="descripcion" name="descripcion" rows="4"></textarea><br>
+
+        <label for="precio">Precio de la habitación:</label>
+        <input type="number" id="precio" name="precio" step="0.01" required readonly><br>
+
+        <label for="imagen">Imagen de la habitación:</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*" required><br>
+
+        <input type="submit" value="Agregar Producto">
+        <a href="../HTML/iniciarSesionAdmin.html"><button type="button" id="atras" class="boton-atras">Atrás</button></a>
+    </form>
+
+    <script>
+        function setPrice() {
+            var tipoHabitacion = document.getElementById('tipoHabitacion').value;
+            var precio = document.getElementById('precio');
+
+            switch (tipoHabitacion) {
+                case 'Presidencial':
+                    precio.value = 50000;
+                    break;
+                case 'Lujo':
+                    precio.value = 25000;
+                    break;
+                case 'Premiun':
+                    precio.value = 1000;
+                    break;
+                case 'Pareja':
+                    precio.value = 500;
+                    break;
+                case 'Doble':
+                    precio.value = 200;
+                    break;
+                case 'Básica':
+                    precio.value = 100;
+                    break;
+                default:
+                    precio.value = '';
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
